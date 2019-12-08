@@ -1,6 +1,10 @@
 <template>
   <b-container class="hello">
-    <h1>Mala malica</h1>
+    <b-jumbotron
+      header="Mala malica"
+    >
+      <p>Kjer je iskanje pomoci mala malica</p>
+    </b-jumbotron>
     <b-list-group>
       <post-element v-for="post in posts" v-bind:key="post.id" v-bind:post="post">
       </post-element>

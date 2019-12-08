@@ -1,30 +1,67 @@
 <template>
-    <div class="center-aligned">
-        <h1>New Post</h1>
-        <div>
-            <label for="title">Title</label>
-            <br/>
-            <input type="text" id="title" name="title" v-model="form.title"/>
-            <br/>
-            <br/>
-            <label for="location">Category</label>
-            <br/>
-            <input type="text" id="category" name="category" v-model="form.category"/>
-            <br/>
-            <br/>
-            <label for="category">Location</label>
-            <br/>
-            <input type="text" id="location" name="location" v-model="form.location"/>
-            <br/>
-            <br/>
-            <label for="description">Description</label>
-            <br/>
-            <textarea id="description" name="description" v-model="form.description"></textarea>
-            <br/>
-            <br/>
-            <button value="Submit" v-on:click="submit">Submit</button>
-        </div>
-    </div>
+    <b-container class="center-aligned">
+        <b-jumbotron
+            header="Nova objava"    
+        >
+
+        </b-jumbotron>
+        <b-form class="form">
+            <b-form-group
+                id="title-group"
+                label="Naslov"
+                label-for="title"
+            >
+                <b-form-input
+                    id="title"
+                    required
+                    v-model="form.title"
+                />
+            </b-form-group>
+
+
+            <b-form-group
+                id="category-group"
+                label="Kategorija"
+                label-for="category"
+            >
+                <b-form-select
+                    id="category"
+                    required
+                    v-model="form.category"
+                    :options="options"
+                />
+            </b-form-group>
+
+            <b-form-group
+                id="location-group"
+                label="Lokacija"
+                label-for="location"
+            >
+                <b-form-input
+                    id="location"
+                    required
+                    v-model="form.location"
+                />
+            </b-form-group>
+            
+            
+            <b-form-group
+                id="description-group"
+                label="Opis"
+                label-for="description"
+            >
+                <b-form-textarea
+                    id="description"
+                    required
+                    v-model="form.description"
+                    rows=7
+                />
+            </b-form-group>
+            
+            
+            <b-button value="Submit" v-on:click="submit">Objavi</b-button>
+        </b-form>
+    </b-container>
 </template>
 
 <script>
@@ -39,7 +76,12 @@
                 location: '',
                 description: '',
             },
-            post: null
+            post: null,
+            options: [
+                { text: 'Pomoc na domu', value: 'Pomoc na domu' },
+                { text: 'Vrtna opravila', value: 'Vrtna opravila' },
+                { text: 'Prevoz', value: 'Prevoz' }
+            ]
         }),
         methods: {
             async submit() {
@@ -54,16 +96,12 @@
 </script>
 
 <style scoped>
-    form {
+    .form {
         text-align: left;
-    }
-    .center-aligned {
-        max-width: 300px;
-        margin: auto;
+        display: inline-block;
     }
 
     input, textarea, button {
-        margin: auto;
         width: 28em;
     }
 

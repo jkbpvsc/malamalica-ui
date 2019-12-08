@@ -32,3 +32,61 @@ export async function getPosts(
 
     return res.data;
 }
+
+export async function getMyPosts(
+    accessToken
+) {
+    const res = await axios.get(
+        `${process.env.VUE_APP_API_BASE_URL}/api/posts/me`,
+        {
+            headers: {
+                'Authorization' : `Bearer ${accessToken}`,
+            }
+        }
+    );
+
+    return res.data;
+}
+
+export async function postBid(
+    data,
+    accessToken
+) {
+    await axios.post(
+        `${process.env.VUE_APP_API_BASE_URL}/api/bids`,
+        qs.stringify(data),
+        {
+            headers: {
+                'Authorization' : `Bearer ${accessToken}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+    );
+}
+
+export async function getPostById(
+    id,
+) {
+    const res = await axios.get(
+        `${process.env.VUE_APP_API_BASE_URL}/api/posts/${id}`,
+    );
+
+    return res.data;
+}
+
+export async function getBidsByPost(
+    postId,
+    accessToken
+) {
+    const res = await axios.get(
+        `${process.env.VUE_APP_API_BASE_URL}/api/posts/${postId}/bids`,
+        {
+            headers: {
+                'Authorization' : `Bearer ${accessToken}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+    );
+
+    return res.data;
+}

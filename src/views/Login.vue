@@ -1,10 +1,12 @@
 <template>
     <div>
+        <div>Prijava</div>
+        <br/>
         <a
                 class="gidc-button"
                 :href="connectUrl"
         >
-            Connect
+            Povezi se z GlobaliD Connect
         </a>
     </div>
 </template>

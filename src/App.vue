@@ -5,7 +5,8 @@
         <router-link v-if="!this.$store.getters.authenticated" to="/login">Prijava</router-link>
         <span v-if="this.$store.getters.authenticated">
             <router-link to="/post/new">Nov oglas</router-link> |
-            <a href="javascript:;" v-on:click="logout">Odjava</a>
+            <router-link to="/user/posts">Vasi oglasi</router-link> |
+            <router-link to="/logout" >Odjava</router-link>
         </span>
     </div>
     <router-view/>
@@ -18,12 +19,6 @@
             const accessToken = window.localStorage.getItem('token');
             if (accessToken) {
                 this.$store.commit('authenticate', accessToken);
-            }
-        },
-        methods: {
-            logout() {
-                this.$store.commit('logout');
-                window.localStorage.removeItem('token');
             }
         }
     }

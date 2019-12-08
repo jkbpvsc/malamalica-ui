@@ -25,7 +25,22 @@ const routes = [
     name: 'New post',
     component: () => import(/* webpackChunkName: "new post" */ '../views/NewPost.vue')
   },
-]
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: () => import(/* webpackChunkName: "logout" */ '../views/Logout.vue')
+  },
+  {
+    path: '/user/posts',
+    name: 'My Posts',
+    component: () => import(/* webpackChunkName: "my posts" */ '../views/MyPosts.vue')
+  },
+  {
+    path: '/post/:id',
+    name: 'My Post',
+    component: () => import(/* webpackChunkName: "my post" */ '../views/Post.vue')
+  }
+];
 
 const router = new VueRouter({
   mode: 'history',
