@@ -6,8 +6,6 @@
                 :title="post.title"
                 class="card-l"
             >
-
-
                 <b-card-text>
                     <font-awesome-icon icon="map-marker-alt"/> {{ post.location }}
                     <b-badge style="float: right">{{ post.category }} </b-badge>
@@ -24,8 +22,10 @@
                 <b-list-group-item
                         v-for="bid in bids"
                         v-bind:key="bid.id"
+                        :to="`/post/${$route.params.id}/bid/${bid.id}`"
                 >
 
+                    <b-badge style="float: right; margin-left: 1em;" variant="info">{{ bid.repliesCount }} </b-badge>
                     <b-badge style="float: right" variant="success">{{ bid.value}} €</b-badge>
                     {{ bid.message }}
 

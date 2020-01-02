@@ -90,3 +90,68 @@ export async function getBidsByPost(
 
     return res.data;
 }
+
+export async function getBidById(
+    bidId,
+    accessToken,
+) {
+    const res = await axios.get(
+        `${process.env.VUE_APP_API_BASE_URL}/api/bids/${bidId}`,
+        {
+            headers: {
+                'Authorization' : `Bearer ${accessToken}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+    );
+
+    return res.data;
+}
+
+export async function getBidMessages(
+    id,
+    accessToken,
+) {
+    const res = await axios.get(
+        `${process.env.VUE_APP_API_BASE_URL}/api/bids/${id}/messages/`,
+        {
+            headers: {
+                'Authorization' : `Bearer ${accessToken}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+    );
+
+    return res.data;
+}
+
+export async function postBidMessage(
+    message,
+    id,
+    accessToken,
+) {
+    const res = await axios.post(
+        `${process.env.VUE_APP_API_BASE_URL}/api/bids/${id}/messages/`,
+        qs.stringify({
+            message,
+        }),
+        {
+            headers: {
+                'Authorization' : `Bearer ${accessToken}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+    );
+
+    return res.data;
+}
+
+export async function getUserById(
+    id,
+) {
+    const res = await axios.get(
+       `${process.env.VUE_APP_API_BASE_URL}/api/users/${id}`
+    );
+
+    return res.data;
+}
