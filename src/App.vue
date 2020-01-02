@@ -6,6 +6,7 @@
         <span v-if="this.$store.getters.authenticated">
             <router-link to="/post/new">Nov oglas</router-link> |
             <router-link to="/user/posts">Vasi oglasi</router-link> |
+            <router-link to="/bids" >Moje Prosnje</router-link> |
             <router-link to="/logout" >Odjava</router-link>
         </span>
     </div>

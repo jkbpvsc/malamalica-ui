@@ -91,6 +91,22 @@ export async function getBidsByPost(
     return res.data;
 }
 
+export async function getMyBids(
+    accessToken,
+) {
+    const res = await axios.get(
+        `${process.env.VUE_APP_API_BASE_URL}/api/bids/me`,
+        {
+            headers: {
+                'Authorization' : `Bearer ${accessToken}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+    );
+
+    return res.data;
+}
+
 export async function getBidById(
     bidId,
     accessToken,
