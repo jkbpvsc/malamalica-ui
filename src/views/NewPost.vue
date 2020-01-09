@@ -67,6 +67,8 @@
 <script>
     import { createPost } from "../controllers/api";
 
+    const getOption = name => ({ text: name, value: name });
+
     export default {
         name: "NewPost",
         data: () => ({
@@ -78,10 +80,13 @@
             },
             post: null,
             options: [
-                { text: 'Pomoc na domu', value: 'Pomoc na domu' },
-                { text: 'Vrtna opravila', value: 'Vrtna opravila' },
-                { text: 'Prevoz', value: 'Prevoz' }
-            ]
+              'Pomoc na domu',
+              'Vrtna opravila',
+              'Prevoz',
+              'Cuvanje otrok',
+              'Cuvanje hisnih ljubljenckov',
+              'Fizicna dela'
+            ].map(getOption),
         }),
         methods: {
             async submit() {
